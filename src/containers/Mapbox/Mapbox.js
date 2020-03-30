@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import React, { Component } from 'react'
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
 import './Mapbox.css'
+
 const Map = ReactMapboxGl({
     accessToken:
         'pk.eyJ1Ijoia2V2aW50aXJ0YWdvbiIsImEiOiJjazhlaTFzZ2gxNTlxM2VuczN0YmtrYjN4In0.SRZhp_TbwD9M-7tkamCzvg'
@@ -8,6 +9,7 @@ const Map = ReactMapboxGl({
 
 
 class Mapbox extends Component {
+
     render() {
         return (
             <div className="Mapbox">
