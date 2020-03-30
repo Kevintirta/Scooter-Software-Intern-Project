@@ -1,0 +1,48 @@
+/* background-color: #744aff; */
+
+.topnav{
+    background-color: #744aff;
+    overflow: hidden;
+    height: 81px;
+    position: relative;
+}
+
+.link{
+    padding:7px 10px;
+    text-decoration: none;
+    color: #fff;
+    margin: 0px 0.5px 0px 0.5px;
+}
+
+.link:hover{
+    border: 3px solid;
+    border-radius: 4px;
+    border-width: 0.5px;
+    background-color: #fff;
+    color:#744aff;
+}
+
+
+.logo{
+    height: 110px;
+    width: 109.8px;
+    margin: 20px 0px 0px 100px;
+    position: fixed;
+    border-radius: 50%;
+    background-color: #ffff;
+    border: 3px solid #744aff;
+    text-align: center;
+}
+
+.logo p{
+    top: 50%;
+    font-weight: 600;
+    color: #744aff;
+    font-size: 34px;
+}
+
+.navbar{
+    top: 40%;
+    left: 40%;
+    position: relative;
+}
