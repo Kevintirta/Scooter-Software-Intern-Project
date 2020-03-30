@@ -6,24 +6,26 @@ import './HomePage.css'
 
 class HomePage extends Component{
 
-    componentDidMount(){
-        db.collection("locations").get().then((snapshot =>{
-            console.log(snapshot.docs)
+    state={
+        locations:[]
+    }
+    componentWillMount(){
+        db.collection("locations").get().then((snapshot =>{    
+            var locations = []        
             snapshot.docs.forEach(
                 doc =>{
-                    console.log(doc.data())
+                   locations.push(doc.data())
                 }
             )
+            this.setState({locations:locations})
         }))
-
     }
 
     render(){
-        console.log("homepage")
         return(
             <div>
                 <Header />
-                <ScooterLocator />
+                <ScooterLocator locations={this.state.locations}/>
             </div>
         )
     }

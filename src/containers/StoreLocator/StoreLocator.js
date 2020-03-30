@@ -10,13 +10,14 @@ class StoreLocator extends Component {
         this.distanceInput = React.createRef();
         this.latitudeInput = React.createRef();
         this.longitudeInput = React.createRef();
+        this.submit = React.createRef();
     }
     submitHandler = () =>{
         let quantity = this.quantityInput.current.value;
         let distance = this.distanceInput.current.value;
         let latitude = this.latitudeInput.current.value;
         let longitude = this.longitudeInput.current.value;
-        
+        this.submit.current.submitHandler()
     }
 
     resetHandler = () =>{
@@ -38,7 +39,7 @@ class StoreLocator extends Component {
                     </div>
                 </div>
                 <div className="map split">
-                    <Mapbox />
+                    <Mapbox ref={this.submit} locations={this.props.locations}/>
                 </div>
             </div>
         )
