@@ -3,49 +3,9 @@ import ReactMapboxGl, { Layer, Feature, Source } from 'react-mapbox-gl'
 import scooterIcon from '../../assets/scooter.png'
 import './Mapbox.css'
 
-const image = new Image(30, 30)
+const image = new Image(35, 35)
 image.src = scooterIcon
-
 const images = ['scooter', image];
-
-const geojson = {
-    'type': 'FeatureCollection',
-    'features': [
-        {
-            'type': 'Feature',
-            'properties': {
-                'message': 'Foo',
-                'iconSize': [30, 30]
-            },
-            'geometry': {
-                'type': 'Point',
-                'coordinates': [103.82528859, 1.3406]
-            }
-        },
-        {
-            'type': 'Feature',
-            'properties': {
-                'message': 'Bar',
-                'iconSize': [50, 50]
-            },
-            'geometry': {
-                'type': 'Point',
-                'coordinates': [-61.2158203125, -15.97189158092897]
-            }
-        },
-        {
-            'type': 'Feature',
-            'properties': {
-                'message': 'Baz',
-                'iconSize': [40, 40]
-            },
-            'geometry': {
-                'type': 'Point',
-                'coordinates': [-63.29223632812499, -18.28151823530889]
-            }
-        }
-    ]
-};
 
 
 const Map = ReactMapboxGl({
@@ -54,79 +14,64 @@ const Map = ReactMapboxGl({
 });
 
 
-class Mapbox extends Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            showScooter: []
-        }
-    }
-
-
-    submitHandler = (quantity, distance, latitude, longitude) => {
-        console.log("map")
-        console.log(this.props.locations)
-        this.map.state.map.flyTo({
-            center: [103.82528859, 1.3406],
-            zoom: [15]
-        })
-        console.log(this.props.locations)
-
-        const point = [{
-            'type': 'Feature',
-            'properties': {
-                'message': 'Foo',
-                'iconSize': [30, 30]
-            },
-            'geometry': {
-                'type': 'Point',
-                'coordinates': [103.82528859, 1.3406]
-            }
-        }]
-        this.setState({showScooter:point})
-
-
-    }
-
-    render() {
-        return (
-            <div className="Mapbox">
-                <Map
-                    ref={(e) => { this.map = e; }}
-                    style="mapbox://styles/mapbox/streets-v9"
-                    containerStyle={{
-                        height: "100%",
-                        width: "100%"
+const Mapbox = (props) => {
+    return (
+        <div className="Mapbox">
+            <Map
+                style="mapbox://styles/mapbox/streets-v9"
+                containerStyle={{
+                    height: "100%",
+                    width: "100%"
+                }}
+                center={props.center}
+                zoom={props.zoom}
+            >
+                <Source
+                    id="scooter_id"
+                    geoJsonSource={{
+                        type: "geojson",
+                        data: {
+                            'type': 'FeatureCollection',
+                            'features': props.showScooter
+                        }
                     }}
-                    onStyleLoad={(Map) => {
-
+                />
+                <Layer
+                    type="symbol"
+                    sourceId="scooter_id"
+                    layout={{ 'icon-image': 'scooter' }}
+                    images={images}
+                />
+                <Source
+                    id={"area"}
+                    geoJsonSource={{
+                        type: "geojson",
+                        data: {
+                            type: "FeatureCollection",
+                            features: props.area
+                        }
                     }}
-                    center={[103.82528859, 1.3406]}
-                    zoom={[10]}
-                >
-                    <Source
-                        id="scooter_id"
-                        geoJsonSource={{
-                            type: "geojson",
-                            data: {
-                                'type': 'FeatureCollection',
-                                'features': this.state.showScooter
-                            }
-                        }}
-                    />
+                ></Source>
 
-                    <Layer
-                        type="symbol"
-                        sourceId="scooter_id"
-                        layout={{ 'icon-image': 'scooter' }}
-                        images={images}
-                    />
-
-                </Map>
-            </div>
-        )
-    }
+                <Layer
+                    type="circle"
+                    sourceId={"area"}
+                    paint={{
+                        "circle-color": "#cc0052",
+                        "circle-opacity": 0.5,
+                        "circle-radius":
+                            [
+                                "interpolate",
+                                ["exponential", 2],
+                                ["zoom"],
+                                0, 0,
+                                20, ["get", "radius"]
+                            ]
+                    }}
+                ></Layer>
+            </Map>
+        </div>
+    )
 }
 
 export default Mapbox;

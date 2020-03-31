@@ -1,13 +1,13 @@
 import React from 'react';
 import './InputBar.css'
 
-const InputBar = React.forwardRef((props, ref) =>{
+const InputBar = (props) =>{
     return(
         <div>
             <p className="text" >{props.text}</p>
-            <input ref= {ref} className="inputBar" type="number" placeholder={props.placeholder}/>
+            <input className="inputBar" type="number" placeholder={props.placeholder} onChange={e => props.inputHandler(e.target.value)}/>
         </div>
     )
-})
+}
 
 export default InputBar;

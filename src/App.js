@@ -1,9 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import logo from './logo.svg';
-import './App.css';
 import HomePage from './containers/HomePage/HomePage'
+import './App.css';
 
 function App() {
   return (
@@ -14,7 +12,6 @@ function App() {
             <HomePage />
           </Route>
           <Route path="*" status={404}>
-            {/* <NoMatch /> */}
             <h1>Error</h1>
           </Route>
         </Switch>

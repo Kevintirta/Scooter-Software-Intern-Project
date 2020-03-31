@@ -1,5 +1,3 @@
-/* background-color: #744aff; */
-
 .topnav{
     background-color: #744aff;
     overflow: hidden;
@@ -11,7 +9,7 @@
     padding:7px 10px;
     text-decoration: none;
     color: #fff;
-    margin: 0px 0.5px 0px 0.5px;
+    margin: 0px 0.5px;
 }
 
 .link:hover{

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css'
 const Header = () => {
+    // Header of the website
     return (
         <div className="topnav">
             <div className="logo">
