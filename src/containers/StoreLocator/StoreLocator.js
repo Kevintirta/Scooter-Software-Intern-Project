@@ -171,6 +171,7 @@ class StoreLocator extends Component {
                             locations={this.props.locations}
                         />
                     </div>
+                    <p className="author">Built by Kevin Gondokusumo</p>
                 </div>
             </div>
         )

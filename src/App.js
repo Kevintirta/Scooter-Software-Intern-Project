@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import HomePage from './containers/HomePage/HomePage'
 import './App.css';
 

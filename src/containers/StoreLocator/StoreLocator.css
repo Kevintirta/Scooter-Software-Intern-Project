@@ -43,3 +43,8 @@
 .groupLocator p{
     text-align: center;
 }
+
+.author{
+    position: absolute;
+    bottom: 0%;
+}

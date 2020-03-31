@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import ReactMapboxGl, { Layer, Feature, Source } from 'react-mapbox-gl'
+import React from 'react'
+import ReactMapboxGl, { Layer, Source } from 'react-mapbox-gl'
 import scooterIcon from '../../assets/scooter.png'
 import './Mapbox.css'
 
