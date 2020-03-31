@@ -15,7 +15,7 @@ const geojson = {
             'type': 'Feature',
             'properties': {
                 'message': 'Foo',
-                'iconSize': [60, 60]
+                'iconSize': [30, 30]
             },
             'geometry': {
                 'type': 'Point',
@@ -56,13 +56,36 @@ const Map = ReactMapboxGl({
 
 class Mapbox extends Component {
 
-    submitHandler = () => {
+    constructor(props) {
+        super(props)
+        this.state = {
+            showScooter: []
+        }
+    }
+
+
+    submitHandler = (quantity, distance, latitude, longitude) => {
         console.log("map")
         console.log(this.props.locations)
         this.map.state.map.flyTo({
             center: [103.82528859, 1.3406],
             zoom: [15]
         })
+        console.log(this.props.locations)
+
+        const point = [{
+            'type': 'Feature',
+            'properties': {
+                'message': 'Foo',
+                'iconSize': [30, 30]
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [103.82528859, 1.3406]
+            }
+        }]
+        this.setState({showScooter:point})
+
 
     }
 
@@ -86,8 +109,11 @@ class Mapbox extends Component {
                         id="scooter_id"
                         geoJsonSource={{
                             type: "geojson",
-                            data: geojson
-                      }}
+                            data: {
+                                'type': 'FeatureCollection',
+                                'features': this.state.showScooter
+                            }
+                        }}
                     />
 
                     <Layer

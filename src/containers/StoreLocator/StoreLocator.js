@@ -17,7 +17,7 @@ class StoreLocator extends Component {
         let distance = this.distanceInput.current.value;
         let latitude = this.latitudeInput.current.value;
         let longitude = this.longitudeInput.current.value;
-        this.submit.current.submitHandler()
+        this.submit.current.submitHandler(quantity,distance,latitude,longitude)
     }
 
     resetHandler = () =>{
