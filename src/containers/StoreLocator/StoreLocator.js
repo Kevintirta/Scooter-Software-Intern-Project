@@ -77,6 +77,11 @@ class StoreLocator extends Component {
         */
         const { quantity, distance, latitude, longitude } = this.state
 
+        if(latitude<-90 || latitude>90 || longitude<-180 || longitude>180){
+            alert("latitude or longitude invalid, Please input valid latitude and longitude")
+            return null
+        }
+
         if (distance <= 30) {
             this.setState({ zoom: [19.1] })
         } else if (distance <= 50) {
