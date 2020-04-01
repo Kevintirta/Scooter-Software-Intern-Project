@@ -7,18 +7,16 @@ const image = new Image(35, 35)
 image.src = scooterIcon
 const images = ['scooter', image];
 
-
 const Map = ReactMapboxGl({
     accessToken:
         'pk.eyJ1Ijoia2V2aW50aXJ0YWdvbiIsImEiOiJjazhlaTFzZ2gxNTlxM2VuczN0YmtrYjN4In0.SRZhp_TbwD9M-7tkamCzvg'
 });
 
-
 const Mapbox = (props) => {
     return (
         <div className="Mapbox">
             <Map
-                style="mapbox://styles/mapbox/streets-v9"
+                style= "mapbox://styles/mapbox/streets-v9"
                 containerStyle={{
                     height: "100%",
                     width: "100%"

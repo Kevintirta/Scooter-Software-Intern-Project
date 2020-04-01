@@ -21,7 +21,6 @@ class StoreLocator extends Component {
         }
     }
 
-
     findDistance = (lat1, lon1, lat2, lon2) => {
         /**
         * To find the distance between 2 coordinates
@@ -63,8 +62,9 @@ class StoreLocator extends Component {
                 }
                 points.push(obj)
             }
+            return null
         })
-        if (quantity != "") {
+        if (quantity !== "") {
             points = points.sort((a, b) => a.properties.distance - b.properties.distance)
             points = points.slice(0, quantity)
         }
