@@ -38,6 +38,7 @@ class StoreLocator extends Component {
     findScooter = (quantity, distance, latitude, longitude) => {
         /**
         * To find the closest X number of scooters given particular distance, latitude, and longitude
+        * Complexity O(N)
         * @param quantity - X number of scooters to be search
         * @param distance - radius of circle
         * @param latitude - latitude of the center
@@ -77,11 +78,13 @@ class StoreLocator extends Component {
         */
         const { quantity, distance, latitude, longitude } = this.state
 
+        // check if latitude and longitude are valid
         if(latitude<-90 || latitude>90 || longitude<-180 || longitude>180){
             alert("latitude or longitude invalid, Please input valid latitude and longitude")
             return null
         }
 
+        //adjust zoom level based on distance 
         if (distance <= 30) {
             this.setState({ zoom: [19.1] })
         } else if (distance <= 50) {
