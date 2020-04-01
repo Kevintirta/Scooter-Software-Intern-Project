@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import InputBar from '../../components/InputBar/InputBar'
-import Mapbox from '../Mapbox/Mapbox'
+import Mapbox from '../../components/Mapbox/Mapbox'
 import './StoreLocator.css'
 
 const SINGAPORE_CENTER = [103.82528859, 1.3406]
